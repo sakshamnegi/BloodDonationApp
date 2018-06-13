@@ -77,17 +77,19 @@ public class RegisterActivity extends AppCompatActivity {
             registerEmail.setError("Email/Phone required!");
             return;
 
-        } else if (passwordString.equalsIgnoreCase("") || passwordString.length()< 6) {
-            registerPassword.setError("Password must be atleast 6 characters long");
-            return;
-        } else if (!passwordString.equals(confirmPasswordString)) {
-            registerPassword.setError("Passwords don't match!");
-            return;
         }
         else if(cityString.equalsIgnoreCase("")){
             city.setError("City required!");
             return;
         }
+        else if (passwordString.equalsIgnoreCase("") || passwordString.length()< 6) {
+            registerPassword.setError("Password must be atleast 6 characters long");
+            return;
+        } else if (!passwordString.equals(confirmPasswordString)) {
+            confirmRegisterPassword.setError("Passwords don't match!");
+            return;
+        }
+
         progressDialog.setMessage("Registering...");
         progressDialog.show();
 

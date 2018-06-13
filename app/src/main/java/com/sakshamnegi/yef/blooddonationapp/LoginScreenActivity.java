@@ -43,13 +43,15 @@ public class LoginScreenActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        /* Code for making the image circular
+            Needed if backround is not white
 
-        //Circular login icon
-        ImageView imageView = (ImageView) findViewById(R.id.login_icon);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.login);
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.launch_splash);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
         roundedBitmapDrawable.setCircular(true);
         imageView.setImageDrawable(roundedBitmapDrawable);
+        */
 
         //On click listener for login
         CardView loginButton = (CardView) findViewById(R.id.login_button);
