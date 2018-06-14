@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item_2"
+        android:title="New Request"
+        android:icon="@drawable/ic_nav_new_request"/>
+    <item android:id="@+id/nav_account"
+        android:title="My Requests"
+        android:icon="@drawable/ic_nav_requests"/>
+
+    <item android:id="@+id/nav_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_nav_logout"/>
+
+
+</menu>

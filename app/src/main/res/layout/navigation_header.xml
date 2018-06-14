@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_nav_user_icon"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+         />
+
+    <TextView
+        android:id="@+id/logged_in_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:layout_marginLeft="16dp"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        android:textSize="26sp"
+        android:layout_marginBottom="8dp"/><!-- remove text and change it to current username -->
+</LinearLayout>

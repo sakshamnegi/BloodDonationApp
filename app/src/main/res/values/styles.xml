@@ -16,4 +16,8 @@
         <item name="android:backgroundTint">#BCAAA4</item>
 
     </style>
+    <style name ="IndividualActionBar" parent ="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+    </style>
 </resources>
