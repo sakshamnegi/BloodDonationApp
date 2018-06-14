@@ -7,7 +7,7 @@
     <color name="accent_material_light">#e53935</color>
     <color name="primary_material_dark">#d32f2f</color>
     <color name="accent_material_dark">#e57373</color>
-    <color name="background_material_dark">#fafafa</color>
+    <color name="background_material_dark">#ffffff</color>
     <color name="white">#ffffff</color>
     <color name="primary_dark_material_dark">#b71c1c</color>
 </resources>

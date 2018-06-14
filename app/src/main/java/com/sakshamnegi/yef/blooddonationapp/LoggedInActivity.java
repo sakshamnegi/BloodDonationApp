@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,6 +18,9 @@ public class LoggedInActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+
+    //TOOLBAR OVERLAY CODE
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +29,19 @@ public class LoggedInActivity extends AppCompatActivity {
 
         //Navigation Drawer stuff
         //Set Navigation Drawer
+
+        // TOOLBAR OVERLAY CODE
+        mToolbar = (Toolbar) findViewById(R.id.navigation_overlay_toolbar) ;
+        setSupportActionBar(mToolbar);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
 
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         //If user not logged in
         //Go to login screen

@@ -12,6 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <include layout="@layout/navigation_action_bar_overlay"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +24,7 @@
         android:textSize="30sp"
         android:gravity="center"
         tools:text="Logged In"
+        android:layout_margin="32dp"
         android:textColor="@color/colorPrimary"/>
     <Button
         android:layout_width="wrap_content"

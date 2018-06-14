@@ -17,9 +17,9 @@
         android:id="@+id/logged_in_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
-        android:textColor="?android:attr/textColorPrimaryInverse"
-        android:textSize="26sp"
-        android:layout_marginBottom="8dp"/><!-- remove text and change it to current username -->
+        android:text="Username"
+        android:textColor="@color/white"
+        android:textSize="26sp" /><!-- remove text and change it to current username -->
 </LinearLayout>
