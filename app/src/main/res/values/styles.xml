@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="yef_app_1" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="yef_app_1" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorBackground">@android:color/background_light</item>
         <item name="android:colorForeground">@color/white</item>
         <item name="android:textColorPrimary">?android:attr/colorBackground</item>
@@ -16,12 +16,14 @@
         <item name="android:backgroundTint">#BCAAA4</item>
 
     </style>
-    <style name ="IndividualActionBar" parent = "Theme.AppCompat.Light.DarkActionBar">
+
+    <style name="IndividualActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
 
     <style name="toolbar_theme" parent="yef_app_1" />
 
@@ -30,4 +32,5 @@
     <style name="toolbar_dark" parent="Theme.AppCompat.NoActionBar" >
         <item name="android:colorBackground">@color/background_material_dark</item>
     </style>
+
 </resources>

@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
-    <item android:id="@+id/item_2"
+    <item android:id="@+id/nav_new_request"
         android:title="New Request"
         android:icon="@drawable/ic_nav_new_request"/>
-    <item android:id="@+id/nav_account"
+    <item android:id="@+id/nav_show_requests"
         android:title="My Requests"
         android:icon="@drawable/ic_nav_requests"/>
 

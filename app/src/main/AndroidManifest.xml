@@ -15,18 +15,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity"
-            android:theme="@style/yef_app_1"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/yef_app_1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginScreenActivity"
-            android:theme="@style/yef_app_1"
-            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/yef_app_1" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/yef_app_1" />
+
         <activity
             android:name=".LoggedInActivity"
             android:label="@string/title_activity_logged_in"
@@ -37,9 +44,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sakshamnegi.yef.blooddonationapp.LoginScreenActivity" />
         </activity>
-        <activity android:name=".RegisterActivity"
-            android:theme="@style/yef_app_1"
-            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
