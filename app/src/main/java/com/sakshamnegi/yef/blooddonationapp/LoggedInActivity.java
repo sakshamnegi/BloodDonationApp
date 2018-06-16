@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
@@ -77,8 +81,6 @@ public class LoggedInActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else {
-            TextView userEmailText = (TextView) findViewById(R.id.logged_in_textview);
-            userEmailText.setText("Logged in as: " + user.getEmail());
             //Display Current username
             getSupportActionBar().setTitle(user.getEmail());
 
@@ -94,14 +96,22 @@ public class LoggedInActivity extends AppCompatActivity {
 
                 if(id == R.id.nav_new_request){
                     //Add new Request here
-                    Toast.makeText(LoggedInActivity.this,"Pressed 1",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoggedInActivity.this,"To be added",Toast.LENGTH_SHORT).show();
                     getSupportActionBar().setTitle("New Request");
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.main_fragment,new Menu1());
+                    ft.addToBackStack("tag_back");
+                    ft.commit();
 
                 }
                 if(id == R.id.nav_show_requests){
                     //Display requests here
-                    Toast.makeText(LoggedInActivity.this,"Pressed 2",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoggedInActivity.this,"To be added",Toast.LENGTH_SHORT).show();
                     getSupportActionBar().setTitle("Requests");
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.main_fragment,new Menu2());
+                    ft.addToBackStack("tag_back");
+                    ft.commit();
 
                 }
                 if(id == R.id.nav_logout){
@@ -120,6 +130,27 @@ public class LoggedInActivity extends AppCompatActivity {
 
 
 
+    }
+
+//Method to select requested fragment
+    private void displaySelectedScreen(int id){
+        Fragment fragment = null ;
+        switch (id){
+            case R.id.nav_new_request:
+                fragment = new Menu1();
+
+            case R.id.nav_show_requests:
+                fragment = new Menu2();
+
+        }
+        if(fragment != null){
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.drawer_layout,fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
     }
 }
 

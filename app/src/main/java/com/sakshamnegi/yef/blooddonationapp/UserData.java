@@ -5,6 +5,7 @@ public class UserData {
     private String email;
     private String name;
     private String city;
+    private String uid;
 
 
     public UserData(){
@@ -28,4 +29,5 @@ public class UserData {
     public String getCity() {
         return city;
     }
+
 }

@@ -1,8 +1,10 @@
 package com.sakshamnegi.yef.blooddonationapp;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -15,11 +17,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    DatabaseReference mRef;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
@@ -31,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        mRef = FirebaseDatabase.getInstance().getReference();
 
         //On click listener for Register button
         CardView registerCardview = (CardView) findViewById(R.id.register_button);
@@ -41,13 +49,17 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-// ???????????????????????????????????????????????????
+
+    // ???????????????????????????????????????????????????
     @Override
     protected void onStart() {
         super.onStart();
 
     }
+/*
+Method to register user and add details to database
 
+ */
     private void registerUser() {
         //Name field
         EditText registerName = (EditText) findViewById(R.id.register_name);
@@ -59,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Password field
         EditText registerPassword = (EditText) findViewById(R.id.register_password);
-        String passwordString = registerPassword.getText().toString();
+        final String passwordString = registerPassword.getText().toString();
 
         //Confirm password field
         EditText confirmRegisterPassword = (EditText) findViewById(R.id.register_confirm_password);
@@ -77,12 +89,10 @@ public class RegisterActivity extends AppCompatActivity {
             registerEmail.setError("Email/Phone required!");
             return;
 
-        }
-        else if(cityString.equalsIgnoreCase("")){
+        } else if (cityString.equalsIgnoreCase("")) {
             city.setError("City required!");
             return;
-        }
-        else if (passwordString.equalsIgnoreCase("") || passwordString.length()< 6) {
+        } else if (passwordString.equalsIgnoreCase("") || passwordString.length() < 6) {
             registerPassword.setError("Password must be atleast 6 characters long");
             return;
         } else if (!passwordString.equals(confirmPasswordString)) {
@@ -92,7 +102,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         progressDialog.setMessage("Registering...");
         progressDialog.show();
-
         firebaseAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -103,9 +112,9 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Registered Successfully. You can Login now", Toast.LENGTH_LONG).show();
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                    DatabaseReference myRef = database.getReference("Email");
+                    DatabaseReference myRef = database.getReference();
                     UserData userData = new UserData(emailString, nameString, cityString);
-                    myRef.setValue(userData);
+                    myRef.child("Users").push().setValue(userData);
                     finish();
                     Intent intent = new Intent(getApplicationContext(), LoginScreenActivity.class);
                     startActivity(intent);
@@ -124,7 +133,9 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
             }
+
         });
+
 
 
     }
